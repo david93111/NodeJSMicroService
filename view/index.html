@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Angular simple shopping cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script data-require="jquery@2.1.4" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" data-require="angularjs@1.4" data-semver="1.4.4"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-cookies.min.js" data-require="angularjs@1.4" data-semver="1.4.4"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-sanitize.min.js" data-require="angularjs@1.4" data-semver="1.4.4"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js" data-require="angularjs@1.4" data-semver="1.4.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/travels.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/style.css"></link>
+  </head>
+
+  <body>
+    <div ng-controller="TravelsController">
+      
+    <custom-header></custom-header>
+      
+    <div id="container" class="container">
+        <h1>Destinations</h1>
+          <div class="panel panel-success fade-in" ng-show="alert.length !== 0">
+            <button type="button" class="close" data-ng-click="emptyAlert()" >×</button>
+            <div class="panel-body"><strong>Done!</strong> {{alert}}</div>
+          </div>
+        <ul class="list-group text-center">
+          <li class="col-xs-12 col-md-3 col-sm-3 col-lg-3 list-group-item" ng-repeat="destination in destinations">
+            <div class="col-md-12 destination-tittle">
+                {{destination.city}}
+            </div>
+            <div class="col-md-12" ng-repeat="location in destination.destinations">
+                <div class="col-md-6">{{location.name}}</div>
+                <div class="col-md-6">{{location.price}}</div>
+            </div>
+            <input class="btn btn-danger" type="button" ng-click="removeCity(destination)" value="Remove" />
+            <input class="btn btn-success" type="button" ng-click="updateCity(destination)" data-toggle="modal" data-target="#destination-form" value="Update" />
+          </li>
+        </ul>
+        <div class="col-md-12 add-dest-btn">
+            <input class="btn btn-success" type="button" href="#" data-toggle="modal" data-target="#destination-form" value="Add Destination" />
+        </div>
+        
+      </div>
+
+       <custom-form></custom-form>
+
+    </div>
+  </body>
+
+</html>

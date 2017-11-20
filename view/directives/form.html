@@ -1,0 +1,38 @@
+<div id="destination-form" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Form</h4>
+            </div>
+            <div class="modal-body">
+                <h1>Add destination</h1>
+                <div ng-show="destinations.length === 0">
+                  <h4>No destinations added. Common lets waste some money! add one !</h4>
+                </div>
+                <div id="city-form">
+                  <label>City:</label><br>
+                  <input type="text" ng-model="city.city"><br>
+                  <label>Destinations in city:</label><br>
+                  <div class="col-md-12" ng-repeat="dest in city.destinations">
+                    <label>Name:</label>
+                    <input type="text" ng-model="dest.name">
+                    <label>price:</label>
+                    <input type="text" ng-model="dest.price">
+                    <input class="btn btn-danger" type="button" ng-click="removeDestination(dest)" value="Remove" />
+                  </div>
+                  <input class="btn btn-success" type="button" ng-click="addLocation()" value="Add Locaion" />
+                </div>
+            </div>
+            <div class="modal-footer">
+              <div ng-if="city._id !== undefined">
+                  <input class="btn btn-success" type="button" ng-click="updateDestination(city)" value="Update" />
+              </div>
+              <div ng-if="city._id === undefined">
+                  <input class="btn btn-success" type="button" ng-click="saveDestination(city)" value="Save" />
+              </div>
+              <button type="button" class="btn btn-default" ng-click="cleanCity()" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+</div>
